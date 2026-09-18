@@ -1,0 +1,201 @@
+{
+  "interventions": [
+    {
+      "id": "KB001",
+      "name": "Legume-based cover cropping",
+      "applicable_when": {
+        "soil_organic_carbon_pct_max": 1.5,
+        "land_use": ["monoculture", "cropland", "degraded_cropland"]
+      },
+      "action": "Introduce legume-based cover crops (e.g., clover, cowpea, vetch) in rotation with the primary crop during fallow periods.",
+      "mechanism": "Legumes fix atmospheric nitrogen via rhizobial symbiosis and add root biomass and leaf litter to soil, raising soil organic carbon (SOC) and feeding soil microbial communities. Denser root networks also improve soil aggregate stability, which reduces erosion and increases water infiltration.",
+      "impacted_metrics": ["soil_organic_carbon", "soil_microbial_diversity", "pollinator_activity", "water_infiltration"],
+      "connected_variables": ["soil_health", "biodiversity"],
+      "effect_estimate": "Soil organic carbon increases by approximately 15-25% over 2-3 years under continuous cover cropping.",
+      "time_horizon": "medium",
+      "confidence": "high",
+      "source": "FAO 'Soil Organic Carbon: the Hidden Potential' (2017); Poeplau & Don, Agriculture, Ecosystems & Environment (2015) meta-analysis on cover crops and SOC",
+      "source_type": "meta-analysis / FAO technical report"
+    },
+    {
+      "id": "KB002",
+      "name": "Agroforestry / tree-crop intercropping",
+      "applicable_when": {
+        "rainfall": ["low", "semi-arid", "erratic"],
+        "land_use": ["monoculture", "cropland"]
+      },
+      "action": "Integrate multipurpose trees (e.g., nitrogen-fixing Faidherbia albida, Gliricidia, or native agroforestry species) into cropland in alley or scattered-tree configurations.",
+      "mechanism": "Tree canopies reduce topsoil evaporation and wind speed at ground level, moderating microclimate and improving effective rainfall use. Deep tree roots access groundwater and hydraulically lift moisture to shallower soil layers, benefiting companion crops. Leaf litter adds organic matter and the added vertical structure creates habitat niches, increasing faunal and floral diversity.",
+      "impacted_metrics": ["soil_organic_carbon", "species_richness", "habitat_diversity", "microclimate_moisture"],
+      "connected_variables": ["soil_health", "biodiversity", "land_use", "climate"],
+      "effect_estimate": "Agroforestry systems in semi-arid regions have shown 20-30% higher on-farm species richness and measurable yield stability gains during low-rainfall years relative to monoculture controls.",
+      "time_horizon": "medium",
+      "confidence": "high",
+      "source": "IPCC AR6 WG3 Ch.7 (AFOLU); FAO 'Agroforestry for Landscape Restoration' (2019); Garrity et al., Food Security (2010) on Faidherbia albida systems",
+      "source_type": "IPCC assessment / FAO technical report / peer-reviewed study"
+    },
+    {
+      "id": "KB003",
+      "name": "Hedgerow and field-margin restoration",
+      "applicable_when": {
+        "land_use": ["monoculture", "cropland", "fragmented"],
+        "habitat_diversity": "low"
+      },
+      "action": "Restore or plant native hedgerows and uncultivated field margins (minimum 2-3 m width) along field boundaries.",
+      "mechanism": "Hedgerows function as habitat corridors that reduce landscape fragmentation, allowing pollinators and natural pest predators to move between patches. This directly counters the isolation effect of monoculture blocks and increases beta-diversity at landscape scale.",
+      "impacted_metrics": ["habitat_diversity", "species_richness", "pollinator_activity", "pest_regulation"],
+      "connected_variables": ["land_use", "biodiversity"],
+      "effect_estimate": "Field margins and hedgerows have been associated with 30-50% higher pollinator visitation rates and measurable increases in natural enemy abundance within 100-250 m of the margin.",
+      "time_horizon": "short",
+      "confidence": "high",
+      "source": "IPBES Global Assessment (2019); Haaland, Naisbit & Bersier, Insect Conservation and Diversity (2011) review of field margins",
+      "source_type": "intergovernmental assessment / peer-reviewed review"
+    },
+    {
+      "id": "KB004",
+      "name": "Rainwater harvesting micro-catchments (semi-circular bunds / zai pits)",
+      "applicable_when": {
+        "rainfall": ["low", "semi-arid", "erratic"]
+      },
+      "action": "Construct semi-circular stone/earth bunds or zai planting pits to capture and concentrate scarce rainfall at the point of infiltration.",
+      "mechanism": "Micro-catchments increase localized soil moisture by capturing runoff that would otherwise be lost, extending the effective growing window for vegetation and improving germination and survival rates of both crops and restoration plantings.",
+      "impacted_metrics": ["soil_moisture", "vegetation_survival_rate", "species_richness"],
+      "connected_variables": ["climate", "soil_health", "biodiversity"],
+      "effect_estimate": "Zai pits and bunds have been documented to raise crop and tree-seedling survival rates by 40-50% in degraded semi-arid land relative to unassisted planting.",
+      "time_horizon": "short",
+      "confidence": "medium",
+      "source": "FAO 'Water Harvesting' technical manual; Reij, Tappan & Smale, IFPRI (2009) on Sahel regreening",
+      "source_type": "FAO technical manual / IFPRI research report"
+    },
+    {
+      "id": "KB005",
+      "name": "Reduced/no-till with residue retention",
+      "applicable_when": {
+        "soil_organic_carbon_pct_max": 1.0,
+        "land_use": ["monoculture", "cropland"]
+      },
+      "action": "Shift from conventional tillage to reduced- or no-till practices, retaining at least 30% crop residue cover on the soil surface.",
+      "mechanism": "Tillage accelerates oxidation of soil organic matter by exposing it to air; avoiding it slows carbon loss and preserves soil fungal networks (notably mycorrhizae) that are disrupted by mechanical disturbance. Residue cover also buffers soil temperature and reduces evaporative water loss.",
+      "impacted_metrics": ["soil_organic_carbon", "soil_microbial_diversity", "water_retention"],
+      "connected_variables": ["soil_health", "biodiversity"],
+      "effect_estimate": "No-till with residue retention has been shown to slow or reverse SOC decline, with gains of roughly 0.1-0.3 tonnes C/ha/year over the first decade of adoption.",
+      "time_horizon": "long",
+      "confidence": "high",
+      "source": "IPCC AR6 WG3 AFOLU chapter; Six et al., Global Change Biology (2004) meta-analysis on tillage and SOC",
+      "source_type": "IPCC assessment / peer-reviewed meta-analysis"
+    },
+    {
+      "id": "KB006",
+      "name": "Riparian buffer restoration",
+      "applicable_when": {
+        "land_use": ["cropland", "grazing", "monoculture"],
+        "water_body_nearby": true
+      },
+      "action": "Establish a vegetated buffer strip (native grasses, shrubs, trees) of at least 10 m along streams, rivers, or wetlands adjacent to the land.",
+      "mechanism": "Riparian vegetation filters sediment and agrochemical runoff before it reaches waterways, reducing eutrophication and pollution load. The buffer also cools water temperature via shading and adds structural habitat complexity that supports aquatic and terrestrial species simultaneously.",
+      "impacted_metrics": ["water_quality", "species_richness", "habitat_diversity", "pollution_load"],
+      "connected_variables": ["land_use", "biodiversity", "human_impact"],
+      "effect_estimate": "Riparian buffers of 10+ m have been shown to reduce sediment and nutrient runoff into adjacent water bodies by 50-80%.",
+      "time_horizon": "medium",
+      "confidence": "high",
+      "source": "IPBES Global Assessment (2019); Mayer et al., Journal of Environmental Quality (2007) riparian buffer meta-analysis",
+      "source_type": "intergovernmental assessment / peer-reviewed meta-analysis"
+    },
+    {
+      "id": "KB007",
+      "name": "Integrated pest management (IPM) to reduce agrochemical load",
+      "applicable_when": {
+        "pollution_indicator": ["high", "moderate"],
+        "land_use": ["monoculture", "cropland"]
+      },
+      "action": "Replace routine broad-spectrum pesticide application with scouting-based IPM: pest thresholds, biological control agents, and targeted (not blanket) chemical use.",
+      "mechanism": "Broad-spectrum pesticides suppress non-target insect populations, including pollinators and natural predators, collapsing local food webs. IPM reduces this collateral pressure, allowing beneficial-insect populations to recover and re-establish natural pest regulation.",
+      "impacted_metrics": ["pollinator_activity", "species_richness", "pollution_load"],
+      "connected_variables": ["human_impact", "biodiversity"],
+      "effect_estimate": "Farms transitioning to IPM have documented pesticide-volume reductions of 30-60% without yield loss, alongside measurable recovery in beneficial arthropod abundance within 1-2 seasons.",
+      "time_horizon": "short",
+      "confidence": "medium",
+      "source": "FAO IPM Programme guidance; Pretty & Bharucha, Insects (2015) review of IPM outcomes",
+      "source_type": "FAO guidance / peer-reviewed review"
+    },
+    {
+      "id": "KB008",
+      "name": "Native grassland / pasture rest-rotation grazing",
+      "applicable_when": {
+        "land_use": ["grazing", "pasture", "degraded_grassland"]
+      },
+      "action": "Move from continuous grazing to rest-rotation or holistic planned grazing, allowing paddocks recovery periods proportional to regrowth rate.",
+      "mechanism": "Continuous grazing pressure prevents native forage species from completing their growth cycle, favoring grazing-tolerant weedy species and reducing plant diversity. Rest periods allow deeper-rooted perennials to re-establish, which increases SOC inputs and root-zone water storage.",
+      "impacted_metrics": ["species_richness", "soil_organic_carbon", "vegetation_cover"],
+      "connected_variables": ["land_use", "soil_health", "biodiversity"],
+      "effect_estimate": "Rest-rotation systems have shown 10-20% increases in native plant species richness and improved ground cover within 3-5 years relative to continuous grazing.",
+      "time_horizon": "medium",
+      "confidence": "medium",
+      "source": "IPCC AR6 WG3 AFOLU chapter; Teague et al., Journal of Soil and Water Conservation (2011) on managed grazing",
+      "source_type": "IPCC assessment / peer-reviewed study"
+    },
+    {
+      "id": "KB009",
+      "name": "Assisted natural regeneration (ANR) on degraded/deforested patches",
+      "applicable_when": {
+        "land_use": ["deforested", "degraded", "bare"]
+      },
+      "action": "Protect existing stumps, root systems, and seed banks from fire and grazing, supplementing with targeted native seedling planting where natural regeneration is sparse.",
+      "mechanism": "Most degraded tropical and subtropical land retains a living root/seed bank capable of regrowth once disturbance pressure (fire, grazing, cutting) is removed. ANR is typically far cheaper and faster to establish canopy cover than full replanting, and preserves locally-adapted genetic diversity.",
+      "impacted_metrics": ["habitat_diversity", "species_richness", "soil_organic_carbon", "canopy_cover"],
+      "connected_variables": ["land_use", "biodiversity", "human_impact"],
+      "effect_estimate": "ANR sites have reached 70-80% of mature-forest canopy cover within 10-15 years at a fraction of the cost of active replanting, per FAO restoration case studies.",
+      "time_horizon": "long",
+      "confidence": "high",
+      "source": "FAO/WRI 'The Road to Restoration' (2019); Chazdon & Guariguata, Biotropica (2016) review of ANR",
+      "source_type": "FAO/WRI report / peer-reviewed review"
+    },
+    {
+      "id": "KB010",
+      "name": "Diversified crop rotation (breaking monoculture)",
+      "applicable_when": {
+        "land_use": ["monoculture"]
+      },
+      "action": "Introduce a 3-4 crop rotation cycle (including at least one legume and one deep-rooted species) instead of continuous single-crop planting.",
+      "mechanism": "Monocultures deplete a narrow band of soil nutrients and select for a small set of pest/pathogen species adapted to that crop, while offering uniform, low-value habitat structure. Rotation diversifies root architecture and nutrient demand, disrupts pest/pathogen life cycles, and creates temporal habitat variation that supports a broader arthropod and microbial community.",
+      "impacted_metrics": ["soil_organic_carbon", "soil_microbial_diversity", "species_richness", "pest_pressure"],
+      "connected_variables": ["land_use", "soil_health", "biodiversity"],
+      "effect_estimate": "Diversified rotations (vs. continuous monoculture) have been linked to 15-20% higher soil microbial biomass and reduced pest outbreak frequency in long-term trials.",
+      "time_horizon": "medium",
+      "confidence": "high",
+      "source": "FAO 'The State of the World's Biodiversity for Food and Agriculture' (2019); Tiemann et al., Ecology Letters (2015) crop rotation diversity meta-analysis",
+      "source_type": "FAO report / peer-reviewed meta-analysis"
+    }
+  ],
+  "clarifying_questions": {
+    "soil_organic_carbon": "What is the soil organic carbon percentage (SOC%)? If unknown, is the soil visually dark/rich or pale/depleted?",
+    "rainfall": "What is the rainfall pattern in the area — high, moderate, low, or erratic/unpredictable?",
+    "land_use": "What is the current land use or crop pattern — monoculture, mixed cropping, grazing/pasture, deforested, or something else?",
+    "region": "What region or climate zone is this (e.g., semi-arid, tropical, temperate)?",
+    "pollution_indicator": "Is there known agrochemical (pesticide/fertilizer) use, industrial runoff, or other pollution pressure nearby?",
+    "water_body_nearby": "Is there a stream, river, or wetland adjacent to or within the land?",
+    "habitat_diversity": "Roughly how much natural (uncultivated) vegetation cover remains — hedgerows, woodlots, wetlands? Low, moderate, or high?"
+  },
+  "metric_relationships": [
+    {
+      "pair": ["soil_organic_carbon", "species_richness"],
+      "relationship": "Higher soil organic carbon supports greater soil microbial and invertebrate diversity, which underpins the food web for above-ground fauna including birds and pollinators.",
+      "source": "FAO 'Soil Biodiversity and Soil Organic Carbon' (2020)"
+    },
+    {
+      "pair": ["rainfall", "species_survival"],
+      "relationship": "Water availability constrains both plant productivity and the carrying capacity for fauna; low or erratic rainfall disproportionately stresses specialist species with narrow moisture tolerances, reducing local richness even before land-use effects are considered.",
+      "source": "IPCC AR6 WG2 Ch.2 (Terrestrial Ecosystems)"
+    },
+    {
+      "pair": ["land_use", "habitat_fragmentation"],
+      "relationship": "Conversion to monoculture or intensive land use removes structural heterogeneity and creates barriers to species movement between remaining natural patches, reducing gene flow and increasing local extinction risk.",
+      "source": "IPBES Global Assessment (2019)"
+    },
+    {
+      "pair": ["pollution", "pollinator_activity"],
+      "relationship": "Agrochemical load, particularly broad-spectrum insecticides, is a leading driver of pollinator decline independent of habitat availability, meaning habitat restoration alone may under-deliver if pollution pressure is not also addressed.",
+      "source": "IPBES Pollinators Assessment (2016)"
+    }
+  ]
+}

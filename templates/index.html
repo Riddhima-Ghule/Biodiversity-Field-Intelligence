@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biodiversity Intelligence</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="wordmark" href="#top">Biodiversity <span>Intelligence</span></a>
+    <nav class="site-nav">
+      <a href="#reasoning">How it reasons</a>
+      <a href="#knowledge">Knowledge base</a>
+      <a href="#console">Try it</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="kicker">AI Biodiversity Intelligence</p>
+      <h1>It reasons like a field&nbsp;scientist,<br>not a chatbot.</h1>
+      <p class="hero-lede">
+        Describe a plot of land — its soil, rainfall, land use, whatever you know —
+        and the system retrieves grounded interventions, checks them against the
+        conditions you've described, and explains the mechanism behind every one,
+        with a citation attached.
+      </p>
+      <ul class="hero-facts">
+        <li><strong>10</strong> interventions in the knowledge base, each with a named source and a measured effect size</li>
+        <li><strong>5</strong> environmental categories connected in a single recommendation — soil, land use, biodiversity, climate, human impact</li>
+        <li><strong>0</strong> generic advice — every answer names a mechanism, not a slogan</li>
+      </ul>
+      <a class="btn-link" href="#console">Open the console ↓</a>
+    </div>
+
+    <div class="hero-console" id="console">
+      <div class="console-panel">
+        <div class="console-head">
+          <span class="dot"></span>
+          <span class="console-title">field log</span>
+          <button class="reset-btn" id="resetBtn" type="button">Reset</button>
+        </div>
+
+        <div class="console-body" id="log" aria-live="polite">
+          <div class="log-entry system">
+            <div class="entry-meta"><span class="who">System</span></div>
+            <div class="entry-body">
+              <p>Tell me about a piece of land — condition of the soil, rainfall, what's
+              growing on it. Free text is fine, or paste JSON.</p>
+              <button class="chip-btn" type="button" data-fill="Biodiversity is declining on my land. Soil organic carbon is 0.3%, rainfall is low, monoculture wheat, semi-arid region.">Try the example from the brief</button>
+            </div>
+          </div>
+        </div>
+
+        <form class="console-input" id="chatForm">
+          <textarea id="chatInput" rows="2" placeholder="e.g. Soil organic carbon is 0.4%, rainfall is erratic, it's grazing land near a stream…" required></textarea>
+          <button type="submit" id="sendBtn">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REASONING PIPELINE ============ -->
+  <section class="reasoning wrap" id="reasoning">
+    <h2>How a recommendation gets made</h2>
+    <p class="section-lede">Four steps, every one inspectable — nothing here is a single
+    opaque call to a language model.</p>
+
+    <ol class="pipeline">
+      <li>
+        <span class="pipeline-num">01</span>
+        <h3>Fill the state</h3>
+        <p>Free text or JSON is parsed into a structured land state. If critical
+        fields — soil carbon, rainfall, land use — are missing, the system asks
+        rather than guesses, and remembers what you've already told it across turns.</p>
+      </li>
+      <li>
+        <span class="pipeline-num">02</span>
+        <h3>Retrieve</h3>
+        <p>The state is turned into a query and matched against the knowledge
+        base and indexed reference reports using TF-IDF vector similarity —
+        a real, inspectable retrieval step, not prompt text.</p>
+      </li>
+      <li>
+        <span class="pipeline-num">03</span>
+        <h3>Match conditions</h3>
+        <p>Each candidate intervention carries explicit applicability
+        conditions. Retrieval score and condition match are combined into a
+        single relevance score, so you can see exactly why something surfaced.</p>
+      </li>
+      <li>
+        <span class="pipeline-num">04</span>
+        <h3>Cross-link metrics</h3>
+        <p>The metrics touched by the top recommendations are checked against
+        a table of known cross-variable relationships — soil carbon and
+        species richness, rainfall and survival — so the answer connects
+        variables instead of treating them in isolation.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ KNOWLEDGE BASE PREVIEW ============ -->
+  <section class="knowledge wrap" id="knowledge">
+    <h2>What's in the knowledge base</h2>
+    <p class="section-lede">A sample of the interventions the system draws on. Every row
+    below is loaded live from <code>knowledge_base.json</code>.</p>
+
+    <div class="kb-table" id="kbTable">
+      <div class="kb-loading">Loading knowledge base…</div>
+    </div>
+  </section>
+
+  <!-- ============ ARCHITECTURE ============ -->
+  <section class="architecture wrap">
+    <h2>Under the hood</h2>
+    <div class="arch-diagram">
+      <svg viewBox="0 0 920 240" role="img" aria-label="Architecture: Conversation Manager feeds the Reasoner, which queries the Knowledge Store">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <text x="780" y="22" text-anchor="middle" class="arch-file">knowledge_base.json + references/*.txt</text>
+        <line x1="780" y1="32" x2="780" y2="90" class="arch-link arch-link-down" marker-end="url(#arrow)"/>
+
+        <g class="arch-node" transform="translate(10,90)">
+          <rect width="260" height="80" rx="3"/>
+          <text x="130" y="34" text-anchor="middle" class="arch-title">Conversation Manager</text>
+          <text x="130" y="56" text-anchor="middle" class="arch-sub">session memory · slot filling</text>
+        </g>
+        <line x1="270" y1="130" x2="330" y2="130" class="arch-link" marker-end="url(#arrow)"/>
+        <g class="arch-node" transform="translate(330,90)">
+          <rect width="260" height="80" rx="3"/>
+          <text x="130" y="34" text-anchor="middle" class="arch-title">Reasoner</text>
+          <text x="130" y="56" text-anchor="middle" class="arch-sub">condition matching · ranking</text>
+        </g>
+        <line x1="590" y1="130" x2="650" y2="130" class="arch-link" marker-end="url(#arrow)"/>
+        <g class="arch-node" transform="translate(650,90)">
+          <rect width="260" height="80" rx="3"/>
+          <text x="130" y="34" text-anchor="middle" class="arch-title">Knowledge Store</text>
+          <text x="130" y="56" text-anchor="middle" class="arch-sub">TF-IDF retrieval · citations</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
